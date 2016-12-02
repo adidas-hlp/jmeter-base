@@ -6,10 +6,10 @@ ENV JMETER_VERSION 3.1
 RUN /usr/bin/dnf install -y tar java-$JDK_VERSION-openjdk-devel.x86_64 && rm -rf /var/cache/yum
 
 RUN cd /var/lib && \
-  curl http://ftp.fau.de/apache/jmeter/binaries/apache-jmeter-$JMETER_VERSION.tgz -o /var/lib/jmeter-$JMETER_VERSION.tgz && \
+  curl --silent http://ftp.fau.de/apache/jmeter/binaries/apache-jmeter-$JMETER_VERSION.tgz -o /var/lib/jmeter-$JMETER_VERSION.tgz && \
   tar xzf jmeter-$JMETER_VERSION.tgz && \
-  mv apache-jmeter-* apache-jmeter \
-  rm -f jmeter-$JMETER_VERSION.tgz
+  mv apache-jmeter* apache-jmeter && \
+  rm -rf jmeter-$JMETER_VERSION.tgz
 
 COPY lib/ /var/lib/apache-jmeter/lib/
 COPY lib/ext/ /var/lib/apache-jmeter/lib/ext/
