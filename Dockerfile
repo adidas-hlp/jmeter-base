@@ -12,6 +12,7 @@ RUN cd /var/lib && \
   rm -rf jmeter-$JMETER_VERSION.tgz
 
 ADD jmeter.properties /var/lib/apache-jmeter/bin/
+ADD user.properties /var/lib/apache-jmeter/bin/
 COPY lib/ /var/lib/apache-jmeter/lib/
 COPY lib/ext/ /var/lib/apache-jmeter/lib/ext/
 
